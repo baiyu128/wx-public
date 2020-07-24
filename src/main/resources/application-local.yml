@@ -1,0 +1,37 @@
+#服务配置
+server:
+  port: 8686
+spring:
+  datasource:
+    #   数据源基本配置
+    username: root
+    password: mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/baiyu?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2b8
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+logging:
+  register-shutdown-hook: false
+  level:
+    org.springframework.web: info        ##Spring框架中的日志级别
+    com.baiyu: info    ##自己项目包名下的日志级别
+    org.apache.tomcat: WARN
+    org.springframework: INFO
+    org.springframework.boot: INFO
+
+#################################  微信公众号配置  ###################################
+wx:
+  mp:
+    configs:
+      - appId:   # 公众号设置中获得
+        secret:    # 同上
+        token:    # 开发后台时配置
+        aesKey:   # 同上
